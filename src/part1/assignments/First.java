@@ -23,7 +23,7 @@ public class First {
         Sort the words array by length.
         Replace null with a lambda expression.
          */
-        Arrays.sort(words, null);
+        Arrays.sort(words, (s1, s2) -> s1.length() - s2.length());
         out.print("Sorted by length ascending: ");
         printArray(words);
 
@@ -31,7 +31,7 @@ public class First {
         Sort the words array by first letter.
         Replace null with a lambda expression.
          */
-        Arrays.sort(words, null);
+        Arrays.sort(words, (s1, s2) -> s1.charAt(0) - s2.charAt(0));
         out.print("Sorted by first letter : ");
         printArray(words);
 
@@ -40,7 +40,15 @@ public class First {
         For the logic you can check the eChecker method below.
         Replace null with a lambda expression.
          */
-        Arrays.sort(words, null);
+        Arrays.sort(words, (s1, s2) ->
+        { int compareFlag = 0;
+            if(s1.contains("e") && !s2.contains("e")) {
+                compareFlag = -1;
+            } else if(s2.contains("e") && !s1.contains("e")) {
+                compareFlag = 1;
+            }
+            return(compareFlag);
+        });
         out.print("Sorted by whether it contains 'e' [v1] : ");
         printArray(words);
 
@@ -53,7 +61,7 @@ public class First {
         Now, redo the final lambda sorting example, but use a method reference in place of an explicit lambda.
         Replace null with a method reference.
          */
-        Arrays.sort(words, null);
+        Arrays.sort(words, First::eChecker);
         out.print("Sorted by whether it contains 'e' [v2] : ");
         printArray(words);
     }

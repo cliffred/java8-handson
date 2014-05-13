@@ -17,7 +17,7 @@ public class Second {
                                                Function<String, String> transformer) {
         List<String> results = new ArrayList<>();
         for (String original : originals) {
-            //implement
+            results.add(transformer.apply(original));
         }
         return (results);
     }
@@ -30,7 +30,7 @@ public class Second {
         Append an exclamation mark (!) to each word in the list
         Replace null with a lambda expression.
          */
-        List<String> excitingWords = transformedList(words, null);
+        List<String> excitingWords = transformedList(words, s -> s + "!");
         System.out.printf("Exciting words: %s.%n", excitingWords);
 
         /*

@@ -18,7 +18,9 @@ public class First {
                                           Predicate<String> matchFunction) {
         List<String> results = new ArrayList<>();
         for (String possibleMatch : candidates) {
-            //implement
+            if(matchFunction.test(possibleMatch)) {
+                results.add(possibleMatch);
+            }
         }
         return (results);
     }
@@ -31,14 +33,14 @@ public class First {
         Generate a list containing only words with less than four characters
         Replace null with a lambda expression.
          */
-        List<String> shortWords = allMatches(words, null);
+        List<String> shortWords = allMatches(words, s -> s.length() < 4);
         out.printf("Short words: %s.%n", shortWords);
 
         /*
         Generate a list containing only words that contain the letter "b"
         Replace null with a lambda expression.
          */
-        List<String> wordsWithB = allMatches(words, null);
+        List<String> wordsWithB = allMatches(words, s -> s.contains("b"));
         out.printf("B words: %s.%n", wordsWithB);
     }
 }

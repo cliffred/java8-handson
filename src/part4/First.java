@@ -16,7 +16,7 @@ public class First {
         Produce a single String that is the result of concatenating the uppercase versions of all of the Strings.
         E.g., the result should be "HIHELLO...". Use a single reduce operation, without using map.
          */
-        String upperCaseWords = words.stream().reduce(null, null);
+        String upperCaseWords = words.stream().reduce("", (s1, s2) -> s1.toUpperCase() + s2.toUpperCase());
         System.out.printf("Single uppercase String: %s.%n", upperCaseWords);
 
         /*
@@ -24,7 +24,7 @@ public class First {
         but this time via a map operation that turns the words into upper case,
         followed by a reduce operation that concatenates them.
          */
-        String upperCaseWords2 = null;
+        String upperCaseWords2 = words.stream().map(String::toUpperCase).reduce("", String::concat);
         out.printf("Single uppercase String: %s.%n", upperCaseWords2);
 
         /*
@@ -32,7 +32,7 @@ public class First {
         but with commas in between. E.g., the result should be "hi,hello,...".
         Note that there is no comma at the beginning, before “hi”, and also no comma at the end, after the last word.
          */
-        String wordsWithCommas = null;
+        String wordsWithCommas = words.stream().reduce((s1, s2) -> s1 + "," + s2).orElse("need at least two strings");
         out.printf("Comma-separated String: %s.%n", wordsWithCommas);
 
 
@@ -50,7 +50,7 @@ public class First {
     }
 
     public static Stream<Double> randomNumberStream(int size) {
-        return null;
+        return(Stream.generate(Math::random).limit(size));
     }
 
     public static List<Double> randomNumberList(int size) {

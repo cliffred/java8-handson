@@ -14,8 +14,11 @@ public class Second {
 
     public static String betterString(String s1, String s2,
                                       TwoStringPredicate tester) {
-        //implement
-        return null;
+        if(tester.isBetter(s1, s2)) {
+            return(s1);
+        } else {
+            return(s2);
+        }
     }
 
     public static void main(String[] args) {
@@ -23,11 +26,11 @@ public class Second {
         String test2 = "Goodbye";
         String message = "Better of %s and %s based on %s is %s.%n";
 
-//        String result1 = betterString(test1, test2, (s1, s2) -> s1.length() > s2.length());
-//        out.printf(message, test1, test2, "length", result1);
+        String result1 = betterString(test1, test2, (s1, s2) -> s1.length() > s2.length());
+        System.out.printf(message, test1, test2, "length", result1);
 
-//        String result2 = betterString(test1, test2, (s1, s2) -> true);
-//        out.printf(message, test1, test2, "1st arg", result2);
+        String result2 = betterString(test1, test2, (s1, s2) -> true);
+        System.out.printf(message, test1, test2, "1st arg", result2);
     }
 
 }
